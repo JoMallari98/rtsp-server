@@ -1,4 +1,3 @@
-
 <p align="center">
     <img src="logo.png" alt="rtsp-simple-server">
 </p>
@@ -7,100 +6,93 @@ _rtsp-simple-server_ is a ready-to-use and zero-dependency server and proxy that
 
 Live streams can be published to the server with:
 
-|protocol|variants|codecs|
-|--------|--------|------|
-|RTSP clients (FFmpeg, GStreamer, etc)|UDP, TCP, RTSPS|H264, H265, VP8, VP9, AV1, MPEG2, M-JPEG, MP3, MPEG4 Audio (AAC), Opus, G711, G722, LPCM and any RTP-compatible codec|
-|RTSP servers and cameras|UDP, UDP-Multicast, TCP, RTSPS|H264, H265, VP8, VP9, AV1, MPEG2, M-JPEG, MP3, MPEG4 Audio (AAC), Opus, G711, G722, LPCM and any RTP-compatible codec|
-|RTMP clients (OBS Studio)|RTMP, RTMPS|H264, H265, MPEG4 Audio (AAC)|
-|RTMP servers and cameras|RTMP, RTMPS|H264, MPEG4 Audio (AAC)|
-|HLS servers and cameras|Low-Latency HLS, MP4-based HLS, legacy HLS|H264, H265, MPEG4 Audio (AAC), Opus|
-|Raspberry Pi Cameras||H264|
+| protocol                              | variants                                   | codecs                                                                                                                |
+| ------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| RTSP clients (FFmpeg, GStreamer, etc) | UDP, TCP, RTSPS                            | H264, H265, VP8, VP9, AV1, MPEG2, M-JPEG, MP3, MPEG4 Audio (AAC), Opus, G711, G722, LPCM and any RTP-compatible codec |
+| RTSP servers and cameras              | UDP, UDP-Multicast, TCP, RTSPS             | H264, H265, VP8, VP9, AV1, MPEG2, M-JPEG, MP3, MPEG4 Audio (AAC), Opus, G711, G722, LPCM and any RTP-compatible codec |
+| RTMP clients (OBS Studio)             | RTMP, RTMPS                                | H264, H265, MPEG4 Audio (AAC)                                                                                         |
+| RTMP servers and cameras              | RTMP, RTMPS                                | H264, MPEG4 Audio (AAC)                                                                                               |
+| HLS servers and cameras               | Low-Latency HLS, MP4-based HLS, legacy HLS | H264, H265, MPEG4 Audio (AAC), Opus                                                                                   |
+| Raspberry Pi Cameras                  |                                            | H264                                                                                                                  |
 
 And can be read from the server with:
 
-|protocol|variants|codecs|
-|--------|--------|------|
-|RTSP|UDP, UDP-Multicast, TCP, RTSPS|H264, H265, VP8, VP9, AV1, MPEG2, M-JPEG, MP3, MPEG4 Audio (AAC), Opus, G711, G722, LPCM and any RTP-compatible codec|
-|RTMP|RTMP, RTMPS|H264, MPEG4 Audio (AAC)|
-|HLS|Low-Latency HLS, MP4-based HLS, legacy HLS|H264, H265, MPEG4 Audio (AAC), Opus|
-|WebRTC||H264, VP8, VP9, Opus, G711, G722|
+| protocol | variants                                   | codecs                                                                                                                |
+| -------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| RTSP     | UDP, UDP-Multicast, TCP, RTSPS             | H264, H265, VP8, VP9, AV1, MPEG2, M-JPEG, MP3, MPEG4 Audio (AAC), Opus, G711, G722, LPCM and any RTP-compatible codec |
+| RTMP     | RTMP, RTMPS                                | H264, MPEG4 Audio (AAC)                                                                                               |
+| HLS      | Low-Latency HLS, MP4-based HLS, legacy HLS | H264, H265, MPEG4 Audio (AAC), Opus                                                                                   |
+| WebRTC   |                                            | H264, VP8, VP9, Opus, G711, G722                                                                                      |
 
 Features:
 
-* Publish live streams to the server
-* Read live streams from the server
-* Proxy streams from other servers or cameras, always or on-demand
-* Streams are automatically converted from a protocol to another. For instance, it's possible to publish a stream with RTSP and read it with HLS
-* Serve multiple streams at once in separate paths
-* Authenticate users; use internal or external authentication
-* Redirect readers to other RTSP servers (load balancing)
-* Query and control the server through an HTTP API
-* Reload the configuration without disconnecting existing clients (hot reloading)
-* Read Prometheus-compatible metrics
-* Run external commands when clients connect, disconnect, read or publish streams
-* Natively compatible with the Raspberry Pi Camera
-* Compatible with Linux, Windows and macOS, does not require any dependency or interpreter, it's a single executable
-
-[![Test](https://github.com/aler9/rtsp-simple-server/workflows/test/badge.svg)](https://github.com/aler9/rtsp-simple-server/actions?query=workflow:test)
-[![Lint](https://github.com/aler9/rtsp-simple-server/workflows/lint/badge.svg)](https://github.com/aler9/rtsp-simple-server/actions?query=workflow:lint)
-[![CodeCov](https://codecov.io/gh/aler9/rtsp-simple-server/branch/main/graph/badge.svg)](https://codecov.io/gh/aler9/rtsp-simple-server/branch/main)
-[![Release](https://img.shields.io/github/v/release/aler9/rtsp-simple-server)](https://github.com/aler9/rtsp-simple-server/releases)
-[![Docker Hub](https://img.shields.io/badge/docker-aler9/rtsp--simple--server-blue)](https://hub.docker.com/r/aler9/rtsp-simple-server)
-[![API Documentation](https://img.shields.io/badge/api-documentation-blue)](https://aler9.github.io/rtsp-simple-server)
+- Publish live streams to the server
+- Read live streams from the server
+- Proxy streams from other servers or cameras, always or on-demand
+- Streams are automatically converted from a protocol to another. For instance, it's possible to publish a stream with RTSP and read it with HLS
+- Serve multiple streams at once in separate paths
+- Authenticate users; use internal or external authentication
+- Redirect readers to other RTSP servers (load balancing)
+- Query and control the server through an HTTP API
+- Reload the configuration without disconnecting existing clients (hot reloading)
+- Read Prometheus-compatible metrics
+- Run external commands when clients connect, disconnect, read or publish streams
+- Natively compatible with the Raspberry Pi Camera
+- Compatible with Linux, Windows and macOS, does not require any dependency or interpreter, it's a single executable
 
 ## Table of contents
 
-* [Installation](#installation)
-  * [Standard](#standard)
-  * [Docker](#docker)
-  * [OpenWRT](#openwrt)
-* [Basic usage](#basic-usage)
-* [General](#general)
-  * [Configuration](#configuration)
-  * [Authentication](#authentication)
-  * [Encrypt the configuration](#encrypt-the-configuration)
-  * [Proxy mode](#proxy-mode)
-  * [Remuxing, re-encoding, compression](#remuxing-re-encoding-compression)
-  * [Save streams to disk](#save-streams-to-disk)
-  * [On-demand publishing](#on-demand-publishing)
-  * [Start on boot](#start-on-boot)
-    * [Linux](#linux)
-    * [Windows](#windows)
-  * [HTTP API](#http-api)
-  * [Metrics](#metrics)
-  * [pprof](#pprof)
-  * [Compile from source](#compile-from-source)
-* [Publish to the server](#publish-to-the-server)
-  * [From a webcam](#from-a-webcam)
-  * [From a Raspberry Pi Camera](#from-a-raspberry-pi-camera)
-  * [From OBS Studio](#from-obs-studio)
-  * [From OpenCV](#from-opencv)
-* [Read from the server](#read-from-the-server)
-  * [From VLC and Ubuntu](#from-vlc-and-ubuntu)
-* [RTSP protocol](#rtsp-protocol)
-  * [General usage](#general-usage)
-  * [TCP transport](#tcp-transport)
-  * [UDP-multicast transport](#udp-multicast-transport)
-  * [Encryption](#encryption)
-  * [Redirect to another server](#redirect-to-another-server)
-  * [Fallback stream](#fallback-stream)
-  * [Corrupted frames](#corrupted-frames)
-  * [Decrease latency](#decrease-latency)
-* [RTMP protocol](#rtmp-protocol)
-  * [General usage](#general-usage-1)
-  * [Encryption](#encryption-1)
-* [HLS protocol](#hls-protocol)
-  * [General usage](#general-usage-2)
-  * [Browser support](#browser-support)
-  * [Embedding](#embedding)
-  * [Low-Latency variant](#low-latency-variant)
-  * [Decrease latency](#decrease-latency-1)
-* [WebRTC protocol](#webrtc-protocol)
-  * [General usage](#general-usage-3)
-  * [Usage inside a container or behind a NAT](#usage-inside-a-container-or-behind-a-nat)
-  * [Embedding](#embedding-1)
-* [Standards](#standards)
-* [Links](#links)
+- [Installation](#installation)
+  - [Standard](#standard)
+  - [Docker](#docker)
+  - [OpenWRT](#openwrt)
+- [Basic usage](#basic-usage)
+- [General](#general)
+  - [Configuration](#configuration)
+  - [Authentication](#authentication)
+  - [Encrypt the configuration](#encrypt-the-configuration)
+  - [Proxy mode](#proxy-mode)
+  - [Remuxing, re-encoding, compression](#remuxing-re-encoding-compression)
+  - [Save streams to disk](#save-streams-to-disk)
+  - [On-demand publishing](#on-demand-publishing)
+  - [Start on boot](#start-on-boot)
+    - [Linux](#linux)
+    - [Windows](#windows)
+  - [HTTP API](#http-api)
+  - [Metrics](#metrics)
+  - [pprof](#pprof)
+  - [Compile from source](#compile-from-source)
+- [Publish to the server](#publish-to-the-server)
+  - [From a webcam](#from-a-webcam)
+  - [From a Raspberry Pi Camera](#from-a-raspberry-pi-camera)
+  - [From OBS Studio](#from-obs-studio)
+  - [From OpenCV](#from-opencv)
+- [Read from the server](#read-from-the-server)
+  - [From VLC and Ubuntu](#from-vlc-and-ubuntu)
+- [RTSP protocol](#rtsp-protocol)
+  - [General usage](#general-usage)
+  - [TCP transport](#tcp-transport)
+  - [UDP-multicast transport](#udp-multicast-transport)
+  - [Encryption](#encryption)
+  - [Redirect to another server](#redirect-to-another-server)
+  - [Fallback stream](#fallback-stream)
+  - [Corrupted frames](#corrupted-frames)
+  - [Decrease latency](#decrease-latency)
+- [RTMP protocol](#rtmp-protocol)
+  - [General usage](#general-usage-1)
+  - [Encryption](#encryption-1)
+- [HLS protocol](#hls-protocol)
+  - [General usage](#general-usage-2)
+  - [Browser support](#browser-support)
+  - [Embedding](#embedding)
+  - [Low-Latency variant](#low-latency-variant)
+  - [Decrease latency](#decrease-latency-1)
+- [WebRTC protocol](#webrtc-protocol)
+  - [General usage](#general-usage-3)
+  - [Usage inside a container or behind a NAT](#usage-inside-a-container-or-behind-a-nat)
+  - [Embedding](#embedding-1)
+- [Standards](#standards)
+- [Links](#links)
 
 ## Installation
 
@@ -206,8 +198,8 @@ There are 3 ways to change the configuration:
 
 1. By editing the `rtsp-simple-server.yml` file, that is
 
-   * included into the release bundle
-   * available in the root folder of the Docker image (`/rtsp-simple-server.yml`); it can be overridden in this way:
+   - included into the release bundle
+   - available in the root folder of the Docker image (`/rtsp-simple-server.yml`); it can be overridden in this way:
 
      ```
      docker run --rm -it --network=host -v $PWD/rtsp-simple-server.yml:/rtsp-simple-server.yml aler9/rtsp-simple-server
@@ -222,6 +214,7 @@ There are 3 ways to change the configuration:
    ```
 
    Parameters that have array as value can be overriden by setting a comma-separated list. For example:
+
    ```
    RTSP_PROTOCOLS="tcp,udp"
    ```
@@ -314,7 +307,7 @@ Please be aware that it's perfectly normal for the authentication server to rece
 ```json
 {
   "user": "",
-  "password": "",
+  "password": ""
 }
 ```
 
@@ -344,8 +337,8 @@ RTSP_CONFKEY=mykey ./rtsp-simple-server
 
 _rtsp-simple-server_ is also a proxy, that is usually deployed in one of these scenarios:
 
-* when there are multiple users that are reading a stream and the bandwidth is limited; the proxy is used to receive the stream once. Users can then connect to the proxy instead of the original source.
-* when there's a NAT / firewall between a stream and the users; the proxy is installed on the NAT and makes the stream available to the outside world.
+- when there are multiple users that are reading a stream and the bandwidth is limited; the proxy is used to receive the stream once. Users can then connect to the proxy instead of the original source.
+- when there's a NAT / firewall between a stream and the users; the proxy is installed on the NAT and makes the stream available to the outside world.
 
 Edit `rtsp-simple-server.yml` and replace everything inside section `paths` with the following content:
 
@@ -664,26 +657,26 @@ All available parameters are listed in the [sample configuration file](https://g
 
 OBS Studio can publish to the server by using the RTMP protocol. In `Settings -> Stream` (or in the Auto-configuration Wizard), use the following parameters:
 
-* Service: `Custom...`
-* Server: `rtmp://localhost`
-* Stream key: `mystream`
+- Service: `Custom...`
+- Server: `rtmp://localhost`
+- Stream key: `mystream`
 
 If credentials are in use, use the following parameters:
 
-* Service: `Custom...`
-* Server: `rtmp://localhost`
-* Stream key: `mystream?user=myuser&pass=mypass`
+- Service: `Custom...`
+- Server: `rtmp://localhost`
+- Stream key: `mystream?user=myuser&pass=mypass`
 
 If you want to generate a stream that can be read with WebRTC, open `Settings -> Output -> Recording` and use the following parameters:
 
-* FFmpeg output type: `Output to URL`
-* File path or URL: `rtsp://localhost:8554/mystream`
-* Container format: `rtsp`
-* Check `show all codecs (even if potentically incompatible`
-* Video encoder: `h264_nvenc (libx264)`
-* Video encoder settings (if any): `bf=0`
-* Audio track: `1`
-* Audio encoder: `libopus`
+- FFmpeg output type: `Output to URL`
+- File path or URL: `rtsp://localhost:8554/mystream`
+- Container format: `rtsp`
+- Check `show all codecs (even if potentically incompatible`
+- Video encoder: `h264_nvenc (libx264)`
+- Video encoder settings (if any): `bf=0`
+- Audio track: `1`
+- Audio encoder: `libopus`
 
 The use the button `Start Recording` (instead of `Start Streaming`) to start streaming.
 
@@ -766,9 +759,9 @@ vlc rtsp://localhost:8554/mystream
 
 RTSP is a standardized protocol that allows to publish and read streams; in particular, it supports different underlying transport protocols, that are chosen by clients during the handshake with the server:
 
-* UDP: the most performant, but doesn't work when there's a NAT/firewall between server and clients. It doesn't support encryption.
-* UDP-multicast: allows to save bandwidth when clients are all in the same LAN, by sending packets once to a fixed multicast IP. It doesn't support encryption.
-* TCP: the most versatile, does support encryption.
+- UDP: the most performant, but doesn't work when there's a NAT/firewall between server and clients. It doesn't support encryption.
+- UDP-multicast: allows to save bandwidth when clients are all in the same LAN, by sending packets once to a fixed multicast IP. It doesn't support encryption.
+- TCP: the most versatile, does support encryption.
 
 The default transport protocol is UDP. To change the transport protocol, you have to tune the configuration of your client of choice.
 
@@ -883,13 +876,13 @@ paths:
 
 In some scenarios, when reading RTSP from the server, decoded frames can be corrupted or incomplete. This can be caused by multiple reasons:
 
-* the packet buffer of the server is too small and can't keep up with the stream throughput. A solution consists in increasing its size:
+- the packet buffer of the server is too small and can't keep up with the stream throughput. A solution consists in increasing its size:
 
   ```yml
   readBufferCount: 1024
   ```
 
-* The stream throughput is too big and the stream can't be sent correctly with the UDP transport. UDP is more performant, faster and more efficient than TCP, but doesn't have a retransmission mechanism, that is needed in case of streams that need a large bandwidth. A solution consists in switching to TCP:
+- The stream throughput is too big and the stream can't be sent correctly with the UDP transport. UDP is more performant, faster and more efficient than TCP, but doesn't have a retransmission mechanism, that is needed in case of streams that need a large bandwidth. A solution consists in switching to TCP:
 
   ```yml
   protocols: [tcp]
@@ -904,7 +897,7 @@ In some scenarios, when reading RTSP from the server, decoded frames can be corr
       sourceProtocol: tcp
   ```
 
-* The stream throughput is too big to be handled by the network between server and readers. Upgrade the network or decrease the stream bitrate by re-encoding it.
+- The stream throughput is too big to be handled by the network between server and readers. Upgrade the network or decrease the stream bitrate by re-encoding it.
 
 ### Decrease latency
 
@@ -994,7 +987,10 @@ ffmpeg -i rtsp://original-source -pix_fmt yuv420p -c:v libx264 -preset ultrafast
 The simples way to embed a HLS stream into a web page consists in using an iframe tag:
 
 ```html
-<iframe src="http://rtsp-simple-server-ip:8888/mystream" scrolling="no"></iframe>
+<iframe
+  src="http://rtsp-simple-server-ip:8888/mystream"
+  scrolling="no"
+></iframe>
 ```
 
 For more advanced options, you can create and serve a custom web page by starting from the [source code of the default page](internal/core/hls_index.html).
@@ -1037,17 +1033,17 @@ in HLS, latency is introduced since a client must wait for the server to generat
 
 To decrease the latency, you can:
 
-* enable the Low-Latency variant of the HLS protocol, as explained in the previous section;
+- enable the Low-Latency variant of the HLS protocol, as explained in the previous section;
 
-* if Low-latency is enabled, try decreasing the `hlsPartDuration` parameter;
+- if Low-latency is enabled, try decreasing the `hlsPartDuration` parameter;
 
-* try decreasing the `hlsSegmentDuration` parameter;
+- try decreasing the `hlsSegmentDuration` parameter;
 
-* The segment duration is influenced by the interval between the IDR frames of the video track. An IDR frame is a frame that can be decoded independently from the others. The server changes the segment duration in order to include at least one IDR frame into each segment. Therefore, you need to decrease the interval between the IDR frames. This can be done in two ways:
+- The segment duration is influenced by the interval between the IDR frames of the video track. An IDR frame is a frame that can be decoded independently from the others. The server changes the segment duration in order to include at least one IDR frame into each segment. Therefore, you need to decrease the interval between the IDR frames. This can be done in two ways:
 
-  * if the stream is being hardware-generated (i.e. by a camera), there's usually a setting called _Key-Frame Interval_ in the camera configuration page
+  - if the stream is being hardware-generated (i.e. by a camera), there's usually a setting called _Key-Frame Interval_ in the camera configuration page
 
-  * otherwise, the stream must be re-encoded. It's possible to tune the IDR frame interval by using ffmpeg's `-g` option:
+  - otherwise, the stream must be re-encoded. It's possible to tune the IDR frame interval by using ffmpeg's `-g` option:
 
     ```
     ffmpeg -i rtsp://original-stream -pix_fmt yuv420p -c:v libx264 -preset ultrafast -b:v 600k -max_muxing_queue_size 1024 -g 30 -f rtsp rtsp://localhost:$RTSP_PORT/compressed
@@ -1094,7 +1090,7 @@ webrtcICEHostNAT1To1IPs: [192.168.x.x]
 webrtcICETCPPMuxAddress: :8189
 ```
 
-The  NAT / container must then be configured in order to redirect all incoming TCP packets on port 8189 to the server. If you're using Docker, this can be achieved with the flag:
+The NAT / container must then be configured in order to redirect all incoming TCP packets on port 8189 to the server. If you're using Docker, this can be achieved with the flag:
 
 ```
 docker run --rm -it \
@@ -1124,29 +1120,32 @@ where `secret` is the secret of the TURN server. _rtsp-simple-server_ will gener
 The simples way to embed a WebRTC stream into a web page consists in using an iframe tag:
 
 ```html
-<iframe src="http://rtsp-simple-server-ip:8889/mystream" scrolling="no"></iframe>
+<iframe
+  src="http://rtsp-simple-server-ip:8889/mystream"
+  scrolling="no"
+></iframe>
 ```
 
 For more advanced options, you can create and serve a custom web page by starting from the [source code of the default page](internal/core/webrtc_index.html).
 
 ## Standards
 
-* RTSP/RTP/RTCP standards https://github.com/aler9/gortsplib#standards
-* HTTP 1.1 https://datatracker.ietf.org/doc/html/rfc2616
-* HLS https://datatracker.ietf.org/doc/html/rfc8216
-* HLS v2 https://datatracker.ietf.org/doc/html/draft-pantos-hls-rfc8216bis
-* Opus in MP4/ISOBMFF https://opus-codec.org/docs/opus_in_isobmff.html
-* Golang project layout https://github.com/golang-standards/project-layout
+- RTSP/RTP/RTCP standards https://github.com/aler9/gortsplib#standards
+- HTTP 1.1 https://datatracker.ietf.org/doc/html/rfc2616
+- HLS https://datatracker.ietf.org/doc/html/rfc8216
+- HLS v2 https://datatracker.ietf.org/doc/html/draft-pantos-hls-rfc8216bis
+- Opus in MP4/ISOBMFF https://opus-codec.org/docs/opus_in_isobmff.html
+- Golang project layout https://github.com/golang-standards/project-layout
 
 ## Links
 
 Related projects
 
-* gortsplib (RTSP library used internally) https://github.com/aler9/gortsplib
-* pion/sdp (SDP library used internally) https://github.com/pion/sdp
-* pion/rtp (RTP library used internally) https://github.com/pion/rtp
-* pion/rtcp (RTCP library used internally) https://github.com/pion/rtcp
-* notedit/rtmp (RTMP library used internally) https://github.com/notedit/rtmp
-* go-astits (MPEG-TS library used internally) https://github.com/asticode/go-astits
-* go-mp4 (MP4 library used internally) https://github.com/abema/go-mp4
-* https://github.com/flaviostutz/rtsp-relay
+- gortsplib (RTSP library used internally) https://github.com/aler9/gortsplib
+- pion/sdp (SDP library used internally) https://github.com/pion/sdp
+- pion/rtp (RTP library used internally) https://github.com/pion/rtp
+- pion/rtcp (RTCP library used internally) https://github.com/pion/rtcp
+- notedit/rtmp (RTMP library used internally) https://github.com/notedit/rtmp
+- go-astits (MPEG-TS library used internally) https://github.com/asticode/go-astits
+- go-mp4 (MP4 library used internally) https://github.com/abema/go-mp4
+- https://github.com/flaviostutz/rtsp-relay
